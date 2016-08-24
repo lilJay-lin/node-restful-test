@@ -3,7 +3,8 @@
  */
 let express = require('express')
 let router = express.Router()
-let Bear = require('../modal/bear')
+let DB = require('../modal/db')
+let Bear = DB.Bear
 
 router.use((req, res, next) => {
     console.log('api requesting...')
@@ -16,21 +17,21 @@ router.post('/', (req, res) => {
 
     bear.save((err) => {
         if (err) {
-            res.send(err)
+            res.end(err)
         }
         res.json({message: 'Bear created'})
     })
 }).get('/', (req, res) => {
     Bear.find((err, bears) => {
         if (err) {
-            res.send(err)
+            res.end(err)
         }
         res.json(bears)
     })
 }).get('/:bear_id', (req, res) => {
     Bear.findById(req.params.bear_id, (err, bear) => {
         if (err) {
-            res.send(err)
+            res.end(err)
         }
         res.json(bear)
     })
@@ -42,7 +43,7 @@ router.post('/', (req, res) => {
         bear.name = req.body.name
         bear.save((err) => {
             if (err) {
-                res.send(err)
+                res.end(err)
             }
             res.json({message: 'Bear updated'})
         })

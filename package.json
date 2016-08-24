@@ -13,8 +13,12 @@
   "author": "liljay",
   "license": "ISC",
   "dependencies": {
+    "auth0-api-jwt-rsa-validation": "0.0.1",
+    "bcryptjs": "^2.3.0",
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
-    "mongoose": "^4.5.9"
+    "express-jwt": "^3.4.0",
+    "mongoose": "^4.5.9",
+    "redis": "^2.6.2"
   }
 }
